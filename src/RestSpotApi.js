@@ -389,7 +389,8 @@ export default class RestSpotApi extends RestCommonApi {
      * @memberof RestSpotApi
      */
     async getInstrumentsCandles(instrument_id, granularity, start, end) {
-
+console.log((`${this.url}/api/spot/v3/instruments/${instrument_id}/candles`)
+            console.log(instrument_id, granularity, start, end)
         return await httpGet(`${this.url}/api/spot/v3/instruments/${instrument_id}/candles`, {
             granularity: granularity,
             start: start,
