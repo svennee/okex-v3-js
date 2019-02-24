@@ -17,13 +17,17 @@ let loggger = log4js.getLogger()
  */
 export default function httpGet(url, param,accessKey,passphrase,secretKey) {
     let paramKeys = Object.keys(param)
+    let paramArr = []
     for (let index in paramKeys) {
-        if (index == 0) {
-            url += `?${paramKeys[index]}=${param[paramKeys[index]]}`
+        var name = paramKeys[index]
+        var value = param[name]
+        if (value == null || value == undefined) {
+            continue
         }
-        else {
-            url += `&${paramKeys[index]}=${param[paramKeys[index]]}`
-        }
+        paramArr.push(name + '=' + value)
+    }
+    if (paramArr.length > 0) {
+        url += `?${paramArr.join('&')}`
     }
     const timestamp = new Date().toISOString()
     const dirUrl = url.replace(/.*\/\/[^\/]*/, '')
