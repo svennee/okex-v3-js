@@ -40,7 +40,7 @@ export default function httpGet(url, param,accessKey,passphrase,secretKey) {
         }
 
     }
-console.log(`httpGet:${url} options:${JSON.stringify(options)}`)
+    console.log(`httpGet:${url} options:${JSON.stringify(options)}`)
     loggger.debug(`httpGet:${url} options:${JSON.stringify(options)}`)
     return fetch(url, options)
 }
